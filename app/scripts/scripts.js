@@ -1,5 +1,24 @@
 $(document).ready(function() {
 
+  var advanceTask = function(task) {
+
+  var modified = task.innerText.trim()
+
+    for (var i = 0; i < listo.length; i++) {
+      if (listo[i].task === modified) {
+        if (listo[i].id === 'new') {
+            listo[i].id = 'inProgress';
+        } else if (listo[i].id === 'inProgress') {
+        listo[i].id = 'archived';
+        } else {
+            listo.splice(i, 1);
+        }
+            break;
+        }
+      }
+      task.remove();
+    };
+
   $('#newTaskForm').hide();
   
   var listo = [];
@@ -36,7 +55,7 @@ $(document).ready(function() {
             e.preventDefault();
             var task = $('#newItemInput').val().trim();
             addTask(task);
-      });
+        });
 
     //Opens form - BUTTON AT BOTTOM OF SCREEN
     $('#add-todo').on('click', function () {
@@ -49,16 +68,9 @@ $(document).ready(function() {
         $('#newTaskForm').fadeToggle('fast', 'linear');
         });
 
-
-
-
-
-
-
-
-
-
-
+    $(document).on('click', '#item', function(e) {
+            e.preventDefault(); 
+        })
 
 
 
