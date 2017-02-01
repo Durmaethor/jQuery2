@@ -1,4 +1,6 @@
 $(document).ready(function() {
+
+  $('#newTaskForm').hide();
   
   var listo = [];
 
@@ -13,6 +15,7 @@ $(document).ready(function() {
           listo.push(task);
 
           $('#newItemInput').val('');
+
             $('#newList').append(
                         '<a href="#finish" class="" id="item">' +
                         '<li class="list-group-item">' +
@@ -25,7 +28,30 @@ $(document).ready(function() {
                     );
                     
       }
+      $('#newTaskForm').slideToggle('fast', 'linear');
   };
+      
+  //ADD TO DO BUTTON
+    $('#saveNewItem').on('click', function (e) {
+            e.preventDefault();
+            var task = $('#newItemInput').val().trim();
+            addTask(task);
+      });
+
+    //Opens form - BUTTON AT BOTTOM OF SCREEN
+    $('#add-todo').on('click', function () {
+        $('#newTaskForm').fadeToggle('fast', 'linear');
+        });
+
+    //closes form - X BUTTON
+    $('#cancel').on('click', function (e) {
+            e.preventDefault();
+        $('#newTaskForm').fadeToggle('fast', 'linear');
+        });
+
+
+
+
 
 
 
