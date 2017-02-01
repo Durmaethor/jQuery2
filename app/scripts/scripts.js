@@ -7,6 +7,13 @@ $(document).ready(function() {
       this.id = 'new';
   }
 
+  var addTask = function(task) {
+      if(task) {
+          task = new Task(task);
+          listo.push(task);
+      }
+  };
+
   
 
 
